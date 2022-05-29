@@ -23,14 +23,11 @@ const ShowArticle: NextPage<Props> = ({ issue, issueComments }) => {
       </Head>
       <section>
         <header>
-          <Time dateTime={issue.created_at} />
           <h1>{issue.title}</h1>
         </header>
         <aside>
           <p>
-            Posted by&nbsp;
-            <Link href={issue.user.html_url}>{issue.user.login}</Link>
-            &nbsp;at&nbsp;
+            Posted at&nbsp;
             <Link href={issue.html_url}>{`#${issue.number}`}</Link>.
           </p>
         </aside>
@@ -40,7 +37,7 @@ const ShowArticle: NextPage<Props> = ({ issue, issueComments }) => {
         <article key={issueComment.id}>
           <section>
             <header>
-              <Time dateTime={issueComment.created_at} />
+              <Time dateTime={issueComment.created_at} displayFormat="HH:mm:ss" />
             </header>
             <div
               dangerouslySetInnerHTML={{ __html: issueComment.bodyHTML }}

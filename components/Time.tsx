@@ -1,9 +1,14 @@
 import { format } from "date-fns";
 
-export default function Time({ dateTime }: { dateTime: string }) {
+export type TimeProps = {
+  dateTime: string;
+  displayFormat: 'yyyy-MM-dd' | 'HH:mm:ss';
+}
+
+export default function Time({ dateTime, displayFormat }: TimeProps) {
   return (
     <time dateTime={dateTime} title={dateTime}>
-      {format(new Date(dateTime), "yyyy-MM-dd")}
+      {format(new Date(dateTime), displayFormat)}
     </time>
   );
 }
